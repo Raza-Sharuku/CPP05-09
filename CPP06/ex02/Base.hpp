@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 10:02:27 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/14 18:04:02 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/15 09:32:26 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <exception>
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
 
 
 class Base
@@ -28,6 +25,16 @@ class Base
     public:
         // デストラクタ
         virtual ~Base(void);
+};
+
+class A : public Base
+{
+};
+class B : public Base
+{
+};
+class C : public Base
+{
 };
 
 Base            *generate(void);

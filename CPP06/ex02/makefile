@@ -1,8 +1,8 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 # CXXFLAGS += -g -fsanitize=address
-NAME = convert
-SRCS = *.cpp
+NAME = ex
+SRCS = main.cpp Base.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
