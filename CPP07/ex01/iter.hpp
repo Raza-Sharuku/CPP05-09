@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:36:02 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/15 13:51:16 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/15 14:43:12 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void iter(T *array, size_t len_of_array, Function func)
     }
     return ;
 };
+
+
 
 template <typename E>
 void print(E& element) 
