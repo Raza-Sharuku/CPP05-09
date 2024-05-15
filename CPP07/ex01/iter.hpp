@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:36:02 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/15 11:55:31 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/15 13:51:16 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#ifndef ITER_HPP
+# define ITER_HPP
 
 #include <iostream>
 
-template <typename T>
-void swap(T &x, T &y)
+template <typename T, typename Function>
+void iter(T *array, size_t len_of_array, Function func)
 {
-    T z = x;
-    x = y;
-    y = z;
+    size_t i = 0;
+    while (i < len_of_array)
+    {
+        func(array[i]);
+        ++i;
+    }
+    return ;
 };
 
 template <typename E>
-E const min(E const x, E const y)
+void print(E& element) 
 {
-    if (x >= y)
-        return (y);
-    else 
-        return (x);
-};
+    std::cout << element << " ";
+}
 
 template <typename M>
-M const max(M const x, M const y)
+void multiply_Two(M& element) 
 {
-    if (x <= y)
-        return (y);
-    else 
-        return (x);
-};
+    element *= 2;
+}
 
 
 #endif
