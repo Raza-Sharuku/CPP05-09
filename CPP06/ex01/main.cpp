@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 11:24:39 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/14 17:24:47 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/17 11:14:08 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,18 @@ int main(void)
 
 
     std::cout << "\033[1;33m" << "++++++++++++++++++ test end ++++++++++++++++++++\n" << "\033[0m" << std::endl;
-
+    delete new_data;
 
 
     return (0);
 }
+
+__attribute__((destructor))
+static void destructor() 
+{
+    system("leaks -q ex");
+}
+
 
 /*
 reinterpret_castは、ポインタの値自体を別の型に変換するだけで、そのポインタが指し示すオブジェクトの構造や内容まで変換するわけではない
