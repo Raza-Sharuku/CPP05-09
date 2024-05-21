@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:36:02 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/16 09:46:35 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/21 19:37:44 by sraza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ class Array
 
 };
 
+
+// 空のArrayを作る必要あり。NULLだと空のArrayはできていないので❌
 template <typename T>
 Array<T>::Array(void) : elements(NULL), length(0)
 {    

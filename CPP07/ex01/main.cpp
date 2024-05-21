@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 11:24:39 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/15 14:41:41 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/21 20:01:29 by sraza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 int main() 
-{
+{  
 	std::cout << "\033[1;33m" << "++++++++++++++++++ test start 1 ++++++++++++++++\n" << "\033[0m" << std::endl;
     int intArray[] = {1, 2, 3, 4, 5};
     double doubleArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
@@ -48,3 +48,4 @@ int main()
 
     return 0;
 }
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:36:02 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/16 11:00:39 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/21 20:01:10 by sraza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ template <typename T, typename Function>
 void iter(T *array, size_t len_of_array, Function func)
 {
     size_t i = 0;
+    if (array == NULL)
+    {
+        std::cout << " Array is NULL. Can't iterate. " << std::endl;
+        return ;
+    }
     while (i < len_of_array)
     {
         func(array[i]);

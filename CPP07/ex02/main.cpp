@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 11:24:39 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/16 10:08:48 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/21 19:56:26 by sraza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
-
-int main() 
+int main()
 {
+    const Array<int> num(10);
+    std::cout << num[0] << std::endl;
+    
 	std::cout << "\033[31m" << "++++++++++++++++++ test start 1 ++++++++++++++++\n" << "\033[0m" << std::endl;
 
     Array<double> arr1;
