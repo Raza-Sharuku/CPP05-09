@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 11:24:39 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/21 19:56:26 by sraza            ###   ########.fr       */
+/*   Updated: 2024/05/22 17:38:46 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,26 @@
 
 int main()
 {
-    const Array<int> num(10);
-    std::cout << num[0] << std::endl;
+    std::cout << "\033[31m" << "++++++++++++++++++ test start 0 const ++++++++++++++++\n" << "\033[0m" << std::endl;
+    Array<int> raza(5);
+    for (unsigned int i = 0; i < raza.size(); ++i) 
+    {
+        raza[i] = i + 100;
+    }
+    for (unsigned int i = 0; i < raza.size(); ++i) 
+    {
+        std::cout << "raza[" << i << "]: " << raza[i] << std::endl;
+    }
+
+    // コンストの確認をここで行う。
+    const Array<int> num = raza;
+    for (unsigned int i = 0; i < num.size(); ++i) 
+    {
+        std::cout << "num[" << i << "]: " << num[i] << std::endl;
+    }
+	std::cout << "\033[31m" << "\n++++++++++++++++++ test finish 0 const +++++++++++++++" << "\033[0m" << std::endl;
+
+
     
 	std::cout << "\033[31m" << "++++++++++++++++++ test start 1 ++++++++++++++++\n" << "\033[0m" << std::endl;
 
@@ -88,4 +106,10 @@ int main()
 
 
     return 0;
+}
+
+__attribute__((destructor))
+static void destructor() 
+{
+    system("leaks -q template");
 }
