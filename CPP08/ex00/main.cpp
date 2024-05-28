@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:05:36 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/24 15:08:26 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/27 10:41:44 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main()
     std::array<int, 5> int_array = {3, 1, 4, 2, 0};
     try 
     {
-        std::cout << easyfind(int_array, 0) << std::endl;
+        std::cout << easyfind(int_array, 3) << std::endl;
     }
     catch (std::exception &e)
     {
@@ -27,7 +27,7 @@ int main()
     }
     try 
     {
-        std::cout << easyfind(int_array, 6) << std::endl;
+        std::cout << easyfind(int_array, 1) << std::endl;
     }
     catch (std::exception &e)
     {
