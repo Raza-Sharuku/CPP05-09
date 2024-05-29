@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:05:36 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/29 15:38:28 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/29 17:39:38 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,15 @@ int main(int argc, char **argv)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "\033[31m" << e.what() << '\n'  << "\033[0m" << std::endl;;
+		std::cerr << "\033[31m" << e.what() << '\n'  << "\033[0m" << std::endl;
 	}
 	
 	BitcoinExchange btc;
+
+	btc.input_data_csv("data.csv");
+	std::cout << "\033[32m" << "++++++++++++++++++ debug ++++++++++++++++\n" << "\033[0m" << std::endl;
+	btc.printData();
+	
 
 
 

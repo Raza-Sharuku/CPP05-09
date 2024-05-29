@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:16:24 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/29 15:39:49 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/05/29 17:44:44 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@
 #include <list>
 #include <deque>
 #include <fstream>
+#include <sstream>
+#include <string>
 
 
 class BitcoinExchange
 {
     private:
         // data.csv用のデータを格納する配列が必要
-
+        std::map<std::string, int>  data;
+        
     public:
         // コンストラクタたち
         BitcoinExchange(void);
@@ -38,6 +41,9 @@ class BitcoinExchange
         ~BitcoinExchange(void);
 
         // メンバ関数
+        std::map<std::string, int>  get_data(void);
+        void                        input_data_csv(const std::string &data_csv);
+        void                        printData() const ;
         
 
 
