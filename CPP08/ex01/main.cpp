@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:05:36 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/01 16:40:03 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/02 13:46:26 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int main()
 
     Span C = Span(10);
     // この配列を編集して追加を確認してください。
-    int Array_list[] = {INT_MAX,3,4,8,2,INT_MIN};
+    int Array_list[] = {INT_MAX,3,4,8,2,INT_MIN, 12,3,56,1};
 
     // 要素数の計算して末尾のポインタを取得している。vectorのコンストラクタを使用して、配列の先頭と末尾のポインタを渡して、
     std::vector<int> Array(Array_list, Array_list + sizeof(Array_list) / sizeof(Array_list[0]));
