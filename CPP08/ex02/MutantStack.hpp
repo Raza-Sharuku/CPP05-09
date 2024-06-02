@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:16:24 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/28 17:32:53 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/02 10:28:21 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <iterator>
 #include <stack>
 #include <deque>
+#include <list>
 
 
 template <typename T>

@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:00:46 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/27 11:21:46 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/01 13:26:41 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@
 
 
 template <typename T>
-typename T::value_type const& easyfind(T const& array, int num)
+typename T::iterator  easyfind(T& array, int num)
 {
-    typename T::const_iterator find_value = std::find(array.begin(), array.end(), num);
-    if (find_value == array.end())
+    typename T::iterator it = std::find(array.begin(), array.end(), num);
+    if (it == array.end())
         throw std::out_of_range("Couldn't found in Array");
-    return (*find_value);
-}
-
+    return (it);
+};
 
 #endif

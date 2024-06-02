@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:16:24 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/28 10:34:00 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/01 15:43:49 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ class Span
 
         // member functions
         void addNumber(int num);
-        void add_number_at_once(const std::vector<int>& Array, size_t position);
-        signed long shortestSpan(void);
-        signed long longestSpan(void);
+        void add_number_at_once(const std::vector<int>& Array);
+        size_t shortestSpan(void);
+        size_t longestSpan(void);
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:05:36 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/27 10:41:44 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/01 13:29:35 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@ int main()
 {
 	std::cout << "\033[31m" << "++++++++++++++++++ test start 1 ++++++++++++++++\n" << "\033[0m" << std::endl;
 
-    std::array<int, 5> int_array = {3, 1, 4, 2, 0};
+    std::vector<int> int_array(5);
+    int_array.push_back(100);
+    int_array.push_back(101);
+    int_array.push_back(102);
+    int_array.push_back(103);
+    int_array.push_back(104);
     try 
     {
-        std::cout << easyfind(int_array, 3) << std::endl;
+        std::vector<int>::iterator it_1 = easyfind(int_array, 104);
+        std::cout << *it_1 << std::endl;
     }
     catch (std::exception &e)
     {
@@ -27,7 +33,8 @@ int main()
     }
     try 
     {
-        std::cout << easyfind(int_array, 1) << std::endl;
+        std::vector<int>::iterator it_2 = easyfind(int_array, 1);
+        std::cout << *it_2 << std::endl;
     }
     catch (std::exception &e)
     {
@@ -37,10 +44,17 @@ int main()
 	std::cout << "\033[31m" << "\n++++++++++++++++++ test finish 1 +++++++++++++++" << "\033[0m" << std::endl;
 
 	std::cout << "\033[32m" << "++++++++++++++++++ test start 2 ++++++++++++++++\n" << "\033[0m" << std::endl;
-    std::array<double, 5> double_array = {3.5, 1.5, 4.0, 2.5, 0.6};
+    
+    std::vector<char> char_array(5);
+    char_array.push_back('r');
+    char_array.push_back('a');
+    char_array.push_back('w');
+    char_array.push_back('z');
+    char_array.push_back('a');
     try 
     {
-        std::cout << easyfind(double_array, (int)4.5) << std::endl;
+        std::vector<char>::iterator it_3 = easyfind(char_array, 'w');
+        std::cout << *it_3 << std::endl;
     }
     catch (std::exception &e)
     {
@@ -48,7 +62,8 @@ int main()
     }
     try 
     {
-        std::cout << easyfind(double_array, (int)10.2) << std::endl;
+        std::vector<char>::iterator it_3 = easyfind(char_array, 'p');
+        std::cout << *it_3 << std::endl;
     }
     catch (std::exception &e)
     {
@@ -56,33 +71,12 @@ int main()
     }
 	std::cout << "\033[32m" << "\n++++++++++++++++++ test finish 2 +++++++++++++++\n" << "\033[0m" << std::endl;
 
-	std::cout << "\033[32m" << "++++++++++++++++++ test start 3 ++++++++++++++++\n" << "\033[0m" << std::endl;
-    std::array<char, 5> char_array = {'r','a', 'w', 'z', 'a'};
-    try 
-    {
-        std::cout << easyfind(char_array, 'a') << std::endl;
-        std::cout << easyfind(char_array, 97) << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    try 
-    {
-        std::cout << easyfind(char_array, 'p') << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-	std::cout << "\033[32m" << "\n++++++++++++++++++ test finish 3 +++++++++++++++\n" << "\033[0m" << std::endl;
-
 
     return 0;
 }
 
-__attribute__((destructor))
-static void destructor() 
-{
-    system("leaks -q ex");
-}
+// __attribute__((destructor))
+// static void destructor() 
+// {
+//     system("leaks -q ex");
+// }

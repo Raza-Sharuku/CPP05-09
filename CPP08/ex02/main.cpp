@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:05:36 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/29 09:30:52 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/02 10:32:29 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,57 @@ int main()
 	}
 
 	std::cout << "\033[32m" << "\n++++++++++++++++++ test finish 2 +++++++++++++++\n" << "\033[0m" << std::endl;
+	std::cout << "\033[32m" << "++++++++++++++++++ test start 3 ++++++++++++++++" << "\033[0m" << std::endl;
+	std::cout << "\033[32m" << "List check\n" << "\033[0m" << std::endl;
+
+	std::cout << "--------- MutantStack -----------" << std::endl;
+
+	MutantStack<int> stack2;
+
+	stack2.push(1);
+	stack2.push(2);
+	stack2.push(3);
+	stack2.push(4);
+	stack2.push(5);
+
+	MutantStack<int>::iterator it_stack2 = stack2.begin();
+	MutantStack<int>::iterator ite_stack2 = stack2.end();
+	++it_stack2;
+	--it_stack2;
+	while (it_stack2 != ite_stack2)
+	{
+		std::cout << *it_stack2 << std::endl;
+		++it_stack2;
+	}
+
+	std::cout << "--------- list -----------" << std::endl;
+	
+	std::list<int> stack_list;
+	stack_list.push_back(1);
+	stack_list.push_back(2);
+	stack_list.push_back(3);
+	stack_list.push_back(4);
+	stack_list.push_back(5);
+
+	std::list<int>::iterator it_list = stack_list.begin();
+	std::list<int>::iterator ite_list = stack_list.end();
+	++it_list;
+	--it_list;
+	while (it_list != ite_list)
+	{
+		std::cout << *it_list << std::endl;
+		++it_list;
+	}
+
+
+
+	std::cout << "\033[32m" << "\n++++++++++++++++++ test finish 3 +++++++++++++++\n" << "\033[0m" << std::endl;
 
     return 0;
 }
 
-__attribute__((destructor))
-static void destructor() 
-{
-    system("leaks -q ex");
-}
+// __attribute__((destructor))
+// static void destructor() 
+// {
+//     system("leaks -q ex");
+// }

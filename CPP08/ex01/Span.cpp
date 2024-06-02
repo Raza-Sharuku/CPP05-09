@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:24:38 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/05/28 10:55:22 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/01 16:39:34 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,46 +81,54 @@ void Span::addNumber(int num)
     return ;
 }
 
-void Span::add_number_at_once(const std::vector<int>& Array, size_t position)
+void Span::add_number_at_once(const std::vector<int>& Array)
 {
-    if (position >= this->array.size())
-        throw std::out_of_range("Position is bigger than size of Current Span. Out of Range");
-    if ((Array.size() + this->array.size()) >= this->m_maxnum)
-        throw std::out_of_range("Array Size is too Large. Can't Add this Array. Out of Range");
-    
-    std::vector<int>::iterator it = this->array.begin() + position;
-    this->array.insert(it, Array.begin(), Array.end());
-    
-    return ;
+    std::vector<int>::iterator it = this->array.end();
+
+    for (std::vector<int>::const_iterator it_arr = Array.begin(); it_arr != Array.end(); ++it_arr)
+    {
+        if (this->array.size() - 1 >= this->m_maxnum)
+            throw std::out_of_range("Can't Add anymore. Out of Range");
+
+        it = this->array.insert(it, *it_arr);
+        ++it;
+    }
+    return;
 }
 
-signed long Span::shortestSpan(void)
+size_t Span::shortestSpan(void)
 {
     if (this->array.size() == 0 || this->array.size() == 1)
         throw std::out_of_range("Can't Calculate Distance. You need more than 2 Elements.");
-    signed long min = 0;
-    signed long distance = 0;
-    for (size_t i = 0; i < (this->array.size() - 1); ++i)
+
+    std::vector<int> sortedArray(this->array);
+    std::sort(sortedArray.begin(), sortedArray.end());
+    size_t min = 0;
+    size_t distance = 0;
+
+    for (size_t i = 0; i < (sortedArray.size() - 1); ++i)
     {
-        distance = std::abs(this->array[i] - this->array[i + 1]);
-        if (distance < min || i == 0)
-            min = distance;
+        if (static_cast<size_t>(sortedArray[i]) > static_cast<size_t>(sortedArray[i + 1]))
+            distance = (static_cast<size_t>(sortedArray[i])) - (static_cast<size_t>(sortedArray[i + 1]));
+        else 
+            distance = (static_cast<size_t>(sortedArray[i + 1])) - (static_cast<size_t>(sortedArray[i]));
+
+        if ((distance) < min || i == 0)
+            min = (distance);
     }
     return (min);
 }
 
-signed long Span::longestSpan(void)
+size_t Span::longestSpan(void)
 {
     if (this->array.size() == 0 || this->array.size() == 1)
         throw std::out_of_range("Can't Calculate Distance. You need more than 2 Elements.");
-    signed long max = 0;
-    signed long distance = 0;
-    for (size_t i = 0; i < (this->array.size() - 1); ++i)
-    {
-        distance = std::abs(this->array[i] - this->array[i + 1]);
-        if (distance > max || i == 0)
-            max = distance;
-    }
+    
+    std::vector<int> sortedArray(this->array);
+    std::sort(sortedArray.begin(), sortedArray.end());
+    size_t max = 0;
+
+    max = static_cast<size_t>(sortedArray[sortedArray.size() - 1]) - static_cast<size_t>(sortedArray[0]);
     return (max);
 }
 
