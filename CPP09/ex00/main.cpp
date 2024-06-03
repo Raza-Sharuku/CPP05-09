@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:05:36 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/02 15:51:11 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/03 11:15:17 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 
 int main(int argc, char **argv)
 {
-	(void)argv;
 	
-	std::cout << "\033[32m" << "++++++++++++++++++ test start 1 ++++++++++++++++\n" << "\033[0m" << std::endl;
 	if (argc != 2)
 	{
 		std::cerr << "\033[31m" << "Error: could not open file.\n" << "\033[0m" << std::endl;
-		return (1);
+		return (0);
 	}
 	try
 	{
@@ -32,25 +30,19 @@ int main(int argc, char **argv)
 	catch(const std::exception& e)
 	{
 		std::cerr << "\033[31m" << e.what() << '\n'  << "\033[0m" << std::endl;
+		return (0);
 	}
 	
 	BitcoinExchange btc;
-
-	std::cout << "\033[32m" << "++++++++++++++++++ debug ++++++++++++++++\n" << "\033[0m" << std::endl;
 	try
 	{
-		btc.collect_data_csv("my_data.csv");
+		btc.collect_data_csv("data.csv");
 		btc.calculate_value(argv[1]);
-		// btc.printData();
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "\033[31m" << e.what() << '\n'  << "\033[0m" << std::endl;
 	}
-	
-	
-	
-	std::cout << "\033[32m" << "++++++++++++++++++ test finish 1 ++++++++++++++++\n" << "\033[0m" << std::endl;
 
     return 0;
 }

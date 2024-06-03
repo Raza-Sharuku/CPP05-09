@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:28:19 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/02 17:29:14 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/03 11:21:20 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,22 @@ static bool is_valid_date(const std::string &date)
     return (true);
 }
 
+static float return_certain_value(const std::map<std::string, float> &dates, const std::string &searchdate)
+{
+    std::map<std::string, float>::const_iterator it = dates.find(searchdate);
+    if (it != dates.end())
+        return (it->second);
+
+    it = dates.lower_bound(searchdate);
+    if (it != dates.begin())
+    {
+        --it;
+        return (it->second);
+    }
+    
+    throw std::invalid_argument("Error : couldn't found valid date.");
+} 
+
 void BitcoinExchange::collect_data_csv(const std::string &data_csv)
 {
     std::string         date;
@@ -125,6 +141,7 @@ void    BitcoinExchange::calculate_value(const std::string &input)
     std::string                 date;
     float                       value;
     std::ifstream               input_file(input);
+    float                       exchangerate;
 
     std::string line;
     std::getline(input_file, line);
@@ -145,7 +162,9 @@ void    BitcoinExchange::calculate_value(const std::string &input)
                 date = space_remover(date);
                 if (!is_valid_date(date))
                     throw std::invalid_argument("Error: invalid date format. (usage: yyyy-mm-dd)");
-                std::cout << "date : " << date << "$" << "         value : " << value << "$" << std::endl;
+                
+                exchangerate = return_certain_value(this->database, date);
+                std::cout << date << " => " << value << " = " << value * exchangerate << std::endl;
             }
             else 
                 std::cout << "Error: bad input => " << date << std::endl;
@@ -156,14 +175,4 @@ void    BitcoinExchange::calculate_value(const std::string &input)
         }
     }
     return ;
-}
-
-
-void BitcoinExchange::printData() const
-{
-    std::map<std::string, int>::const_iterator it;
-    for (it = (this->database).begin(); it != (this->database).end(); ++it) 
-    {
-        std::cout << it->first << "," << it->second << std::endl;
-    }
 }
