@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:51:07 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/03 11:52:26 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/05 11:47:41 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,30 @@
 #include <iostream>
 #include <exception>
 #include <iterator>
-#include <fstream>
-#include <sstream>
 #include <string>
-#include <map>
+#include <sstream>
+#include <stack>
+
 
 
 class RPN
 {
     private:
-
+        std::stack<int> rpn_stack;
+        int             result;
+        RPN(void);
         
     public:
         // コンストラクターズ
-        RPN(void);
+        RPN(const std::string &str);
         RPN(const RPN &other);
         RPN &operator=(const RPN &other);
         ~RPN(void);
 
         // メンバ関数
-
+        void        printStack();
+        int         calculate_stack(std::string token);
+        int         get_result(void);
 };
 
 
