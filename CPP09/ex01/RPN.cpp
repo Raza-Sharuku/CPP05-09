@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:55:34 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/05 13:52:11 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/11 10:36:08 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ int RPN::calculate_stack(std::string token)
     else 
         throw std::invalid_argument("Error: Bad operator");
 
-    if (token == "+" && (calculated_value < left_side || calculated_value < right_side))
+    if (token == "+" && (static_cast<int>(calculated_value) < left_side || static_cast<int>(calculated_value) < right_side))
         throw std::out_of_range("Error: Overflow");
-    else if (token == "-" && calculated_value > left_side)
+    else if (token == "-" && static_cast<int>(calculated_value) > left_side)
         throw std::out_of_range("Error: Underflow");
-    else if (token == "*" && (left_side != 0 && calculated_value / left_side != right_side))
+    else if (token == "*" && (left_side != 0 && static_cast<int>(calculated_value) / left_side != right_side))
         throw std::out_of_range("Error: Overflow");
 
     return (calculated_value);
@@ -124,3 +124,4 @@ int RPN::get_result(void)
 {
     return (this->result);
 }
+
