@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:57:58 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/11 14:51:34 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/13 11:21:08 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 #include <iterator>
 #include <string>
 #include <sstream>
-#include <stack>
+#include <vector>
+#include <deque>
+#include <algorithm>
+#include <climits>
 
 
 
@@ -26,16 +29,25 @@ class PmergeMe
 {
     private:
         PmergeMe(void);
-        
-    public:
-        // コンストラクターズ
-        PmergeMe(const std::string &str);
         PmergeMe(const PmergeMe &other);
         PmergeMe &operator=(const PmergeMe &other);
+
+        std::vector<int>    vec_arr;
+        std::deque<int>     deque_arr;
+        time_t              vec_time;
+        time_t              deque_time;
+
+    public:
+        // コンストラクターず
+        PmergeMe(std::vector<int>& vec);
         ~PmergeMe(void);
 
         // メンバ関数
-        
+        void    insertion_sort_vec();
+        void    merge_insertion_sort_vec();
+        void    insertion_sort_deque();
+        void    merge_insertion_sort_deque();
+
 };
 
 
