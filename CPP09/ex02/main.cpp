@@ -6,14 +6,13 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:55:23 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/13 11:19:56 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/23 18:31:13 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 
-// template<typename T>
 std::vector<int> make_list(char *argv[], int argc)
 {
     std::vector<int> vec_arr;
@@ -43,11 +42,12 @@ std::vector<int> make_list(char *argv[], int argc)
     }
 
     // vec_arrの内容を確認
-    for (std::vector<int>::iterator it = vec_arr.begin(); it != vec_arr.end(); ++it)
-    {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+    // std::cout << "\033[35m" << "-------------->         ";
+    // for (std::vector<int>::iterator it = vec_arr.begin(); it != vec_arr.end(); ++it)
+    // {
+    //     std::cout << *it << " ";
+    // }
+    // std::cout << "\033[0m"  << std::endl << std::endl;
 
     return (vec_arr);
 }
