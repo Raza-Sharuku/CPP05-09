@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:55:46 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/11 10:36:48 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/24 10:26:49 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int main(int argc, char **argv)
 		std::cout << "\033[31m" << '\n' << e.what() << '\n'  << "\033[0m" << std::endl;
 		return (0);
 	}
-	
 
     return 0;
 }
@@ -75,7 +74,7 @@ int main(int argc, char **argv)
 // __attribute__((destructor))
 // static void destructor() 
 // {
-//     system("leaks -q btc");
+//     system("leaks -q RPN");
 // }
 
 

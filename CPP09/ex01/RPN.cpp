@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:55:34 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/11 10:36:08 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/24 12:00:16 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int RPN::calculate_stack(std::string token)
 {
     if (this->rpn_stack.size() < 2)
         throw std::invalid_argument("Error: Invalid format of RPN");
-    
+
     int left_side = 0;
     int right_side = 0;
     size_t calculated_value = 0;
@@ -110,7 +110,7 @@ int RPN::calculate_stack(std::string token)
     else 
         throw std::invalid_argument("Error: Bad operator");
 
-    if (token == "+" && (static_cast<int>(calculated_value) < left_side || static_cast<int>(calculated_value) < right_side))
+    if (token == "+" && (static_cast<int>(calculated_value) < left_side || static_cast<int>(calculated_value) < right_side) && left_side > 0 && right_side > 0)
         throw std::out_of_range("Error: Overflow");
     else if (token == "-" && static_cast<int>(calculated_value) > left_side)
         throw std::out_of_range("Error: Underflow");

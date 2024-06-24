@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:59:30 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/23 18:30:27 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/24 10:16:57 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ bool is_sorted(std::vector<int>& vec)
             return (false);
     }
     return (true);
-
 }
 
 bool is_sorted_deq(std::deque<int>& deq)
@@ -35,7 +34,6 @@ bool is_sorted_deq(std::deque<int>& deq)
             return (false);
     }
     return (true);
-
 }
 
 PmergeMe::PmergeMe(const PmergeMe &other)
@@ -76,13 +74,12 @@ PmergeMe::PmergeMe(std::vector<int>& vec)
 
     print_sort_result(time_ms_vec, time_ms_deq, vec);
 
-    if (!is_sorted(this->vec_arr))
-        std::cout << "\033[31m" << '\n' << "VECTOR NOT SORTED \n"  << "\033[0m" << std::endl;
-    if (!is_sorted_deq(this->deque_arr))
-        std::cout << "\033[31m" << '\n' << "DEQUE NOT SORTED \n"  << "\033[0m" << std::endl;
-    else 
-        std::cout << "\033[32m" << '\n' << "SORTED \n"  << "\033[0m" << std::endl;
-
+    // if (!is_sorted(this->vec_arr))
+    //     std::cout << "\033[31m" << '\n' << "VECTOR NOT SORTED \n"  << "\033[0m" << std::endl;
+    // if (!is_sorted_deq(this->deque_arr))
+    //     std::cout << "\033[31m" << '\n' << "DEQUE NOT SORTED \n"  << "\033[0m" << std::endl;
+    // else 
+    //     std::cout << "\033[32m" << '\n' << "SORTED \n"  << "\033[0m" << std::endl;
 
     return ;
 }
