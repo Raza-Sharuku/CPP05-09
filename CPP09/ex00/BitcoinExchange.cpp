@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:28:19 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/26 09:54:12 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/26 20:59:02 by sraza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,15 @@ static bool is_valid_date(const std::string &date)
 
 static float return_certain_value(const std::map<std::string, float> &dates, const std::string &searchdate)
 {
-    std::map<std::string, float>::const_iterator it;
-    for (it = dates.begin(); it != dates.end(); ++it)
+    std::map<std::string, float>::const_iterator it = dates.find(searchdate);
+    if (it != dates.end())
+        return (it->second);
+
+    it = dates.lower_bound(searchdate);
+    if (it != dates.begin())
     {
-        if (it->first > searchdate)
-        {
-            if (it != dates.begin())
-            {
-                --it;
-                return (it->second);
-            }
-            break;
-        }
+        --it;
+        return (it->second);
     }
     
     throw std::runtime_error("Error : couldn't found valid date.");
