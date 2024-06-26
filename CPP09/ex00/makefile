@@ -1,6 +1,6 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-CXXFLAGS += -g -fsanitize=address,undefined
+# CXXFLAGS += -g -fsanitize=address,undefined
 NAME = btc
 SRCS = main.cpp BitcoinExchange.cpp
 

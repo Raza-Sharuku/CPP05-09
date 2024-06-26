@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:28:19 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/03 11:21:20 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/26 09:54:12 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ BitcoinExchange::~BitcoinExchange(void)
 
 static std::string space_remover(const std::string &str)
 {
-    std::string::const_iterator start = str.begin();
-    std::string::const_iterator end = str.end();
+    const char* start = str.c_str();
+    const char* end = start + str.length();
 
     // 文字列の最初のいらないものを飛ばす
     while (start != end && (*start == ' ' || *start == '\t' || *start == '\n'))
@@ -53,8 +53,7 @@ static std::string space_remover(const std::string &str)
     while (end != start && (*(end - 1) == ' ' || *(end - 1) == '\t' || *(end - 1) == '\n'))
         --end;
     
-    std::string new_str = std::string(start, end);
-
+    std::string new_str(start, end - start);
     return (new_str);
 }
 
@@ -95,18 +94,21 @@ static bool is_valid_date(const std::string &date)
 
 static float return_certain_value(const std::map<std::string, float> &dates, const std::string &searchdate)
 {
-    std::map<std::string, float>::const_iterator it = dates.find(searchdate);
-    if (it != dates.end())
-        return (it->second);
-
-    it = dates.lower_bound(searchdate);
-    if (it != dates.begin())
+    std::map<std::string, float>::const_iterator it;
+    for (it = dates.begin(); it != dates.end(); ++it)
     {
-        --it;
-        return (it->second);
+        if (it->first > searchdate)
+        {
+            if (it != dates.begin())
+            {
+                --it;
+                return (it->second);
+            }
+            break;
+        }
     }
     
-    throw std::invalid_argument("Error : couldn't found valid date.");
+    throw std::runtime_error("Error : couldn't found valid date.");
 } 
 
 void BitcoinExchange::collect_data_csv(const std::string &data_csv)
@@ -114,14 +116,15 @@ void BitcoinExchange::collect_data_csv(const std::string &data_csv)
     std::string         date;
     float               exchangerate;
 
-    std::ifstream file(data_csv);
+    std::ifstream file;
+    file.open(data_csv);
     if (!file)
-        throw  std::invalid_argument("Error : File couldn't open. ");
+        throw  std::runtime_error("Error : File couldn't open. ");
     
     std::string line;
     std::getline(file, line);
     if (line != "date,exchange_rate")
-        throw  std::invalid_argument("Error : File format is Wrong");
+        throw  std::runtime_error("Error : File format is Wrong");
 
     while (std::getline(file, line))
     {
@@ -140,13 +143,17 @@ void    BitcoinExchange::calculate_value(const std::string &input)
     std::map<std::string, int>  input_data;
     std::string                 date;
     float                       value;
-    std::ifstream               input_file(input);
     float                       exchangerate;
+    std::string                 line;
+    std::ifstream               input_file;
 
-    std::string line;
+    input_file.open(input);
+    if (!input_file)
+        throw  std::runtime_error("Error : File couldn't open. ");
+
     std::getline(input_file, line);
     if (line != "date | value")
-        throw std::invalid_argument("Error : File format is Wrong");
+        throw std::runtime_error("Error : File format is Wrong");
 
     while (std::getline(input_file, line))
     {
@@ -156,12 +163,12 @@ void    BitcoinExchange::calculate_value(const std::string &input)
             if (std::getline(iss, date, '|') && iss >> value)
             {
                 if (value < 0)
-                    throw std::invalid_argument("Error: not a positive number.");
+                    throw std::runtime_error("Error: not a positive number.");
                 if (value > 1000)
-                    throw std::invalid_argument("Error: too large a number.");
+                    throw std::runtime_error("Error: too large a number.");
                 date = space_remover(date);
                 if (!is_valid_date(date))
-                    throw std::invalid_argument("Error: invalid date format. (usage: yyyy-mm-dd)");
+                    throw std::runtime_error("Error: invalid date format. (usage: yyyy-mm-dd)");
                 
                 exchangerate = return_certain_value(this->database, date);
                 std::cout << date << " => " << value << " = " << value * exchangerate << std::endl;
