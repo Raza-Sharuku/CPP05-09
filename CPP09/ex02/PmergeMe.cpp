@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:59:30 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/24 10:16:57 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/26 10:06:58 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,19 @@ PmergeMe::~PmergeMe(void)
 PmergeMe::PmergeMe(std::vector<int>& vec)
 {
     this->vec_arr = vec;
-    this->deque_arr = std::deque<int>(vec.begin(), vec.end());
+    this->deque_arr.clear();
+    std::copy(vec.begin(), vec.end(), std::back_inserter(this->deque_arr));
 
 
-    std::clock_t start = std::clock();
+    clock_t start = clock();
     this->vec_arr = fordJohnson_Sort_vec(this->vec_arr);
-    std::clock_t end = std::clock();
+    clock_t end = clock();
     double time_ms_vec = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 
 
-    std::clock_t start_deq = std::clock();
+    clock_t start_deq = clock();
     this->deque_arr = fordJohnson_Sort_deq(this->deque_arr);
-    std::clock_t end_deq = std::clock();
+    clock_t end_deq = clock();
     double time_ms_deq = static_cast<double>(end_deq - start_deq) / CLOCKS_PER_SEC * 1000.0;
 
     print_sort_result(time_ms_vec, time_ms_deq, vec);

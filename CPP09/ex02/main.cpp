@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:55:23 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/23 18:31:13 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/26 10:15:51 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ std::vector<int> make_list(char *argv[], int argc)
             token_stream >> num;
 
             if (token_stream.fail() || !token_stream.eof())
-                throw std::invalid_argument("Error: Invalid argument.");
+                throw std::runtime_error("Error: Invalid argument.");
             if (num < 0)
                 throw std::out_of_range("Error: Negative number.");
 
