@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:55:34 by razasharuku       #+#    #+#             */
-/*   Updated: 2024/06/24 12:00:16 by razasharuku      ###   ########.fr       */
+/*   Updated: 2024/06/26 11:01:22 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,26 +96,39 @@ int RPN::calculate_stack(std::string token)
     this->rpn_stack.pop();
 
     if (token == "+")
+    {
+        if (right_side > 0 && left_side > INT_MAX - right_side)
+            throw std::out_of_range("Error: Overflow");
+        if (right_side < 0 && left_side < INT_MIN - right_side)
+            throw std::out_of_range("Error: Underflow");
         calculated_value = left_side + right_side;
+    }
     else if (token == "-")
+    {
+        if (right_side < 0 && left_side > INT_MAX + right_side)
+            throw std::out_of_range("Error: Overflow");
+        if (right_side > 0 && left_side < INT_MIN + right_side)
+            throw std::out_of_range("Error: Underflow");
         calculated_value = left_side - right_side;
+    }
     else if (token == "*")
+    {
+        if (right_side > 0 && left_side > INT_MAX / right_side)
+            throw std::out_of_range("Error: Overflow");
+        if (right_side > 0 && left_side < INT_MIN / right_side)
+            throw std::out_of_range("Error: Underflow");
+        if (right_side < 0 && left_side > INT_MIN / right_side)
+            throw std::out_of_range("Error: Overflow");
+        if (right_side < 0 && left_side < INT_MAX / right_side)
+            throw std::out_of_range("Error: Underflow");
         calculated_value = left_side * right_side;
+    }
     else if (token == "/")
     {
         if (right_side == 0)
             throw std::logic_error("Error: Can't divide by 0");
         calculated_value = left_side / right_side;
     }
-    else 
-        throw std::invalid_argument("Error: Bad operator");
-
-    if (token == "+" && (static_cast<int>(calculated_value) < left_side || static_cast<int>(calculated_value) < right_side) && left_side > 0 && right_side > 0)
-        throw std::out_of_range("Error: Overflow");
-    else if (token == "-" && static_cast<int>(calculated_value) > left_side)
-        throw std::out_of_range("Error: Underflow");
-    else if (token == "*" && (left_side != 0 && static_cast<int>(calculated_value) / left_side != right_side))
-        throw std::out_of_range("Error: Overflow");
 
     return (calculated_value);
 }
@@ -124,4 +137,3 @@ int RPN::get_result(void)
 {
     return (this->result);
 }
-
